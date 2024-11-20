@@ -1,0 +1,60 @@
+<style type="text/css">
+    table {
+        width:100%;
+    }
+    table, td, th {
+        border: 1px solid black;
+        padding: 3px 2px;
+    }
+    main{
+        width:90%;
+        margin:auto;
+    }
+    .title{
+        text-align: center;
+        margin-top:15px;
+        margin-bottom: 5px;
+        color: #017682;
+    }
+    table{
+        width: 600px;
+        margin:auto;
+    }
+    .button{
+        display: block;
+        width: fit-content;
+        margin: auto;
+        margin-top:15px;
+    }
+</style>
+<main>
+<section>
+    <header>
+        <h2 class="title">Booking confirmation </h2>
+    </header>
+    <table>
+        <tr>
+            <th colspan="2">
+                Your Booking Status
+            </th>
+        </tr>
+        <tr>
+            <td><b>Attendee Name </b></td>
+            <td th:text="${eventBooking.attendeeName}"></td>
+        </tr>
+        <tr>
+            <td><b>Client IP Address</b></td>
+            <td th:text="${eventBooking.attendeeAddress}"></td>
+        </tr>
+        <tr>
+            <td><b>Booking for Event</b></td>
+            <td th:text="${eventBooking.eventName}"></td>
+        </tr>
+        <tr>
+            <td><b>Number of tickets</b></td>
+            <td th:text="${eventBooking.numberOfTickets}"></td>
+        </tr>
+    </table>
+</section>
+<a th:href="@{/}" class="button">Go back</a>
+</main>

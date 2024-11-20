@@ -1,0 +1,100 @@
+<style>
+    form{
+        width:350px;
+        height:fit-content;
+        padding:25px;
+        margin:100px auto;
+        border:1px solid white;
+        border-radius: 4px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    form label{
+        display: grid;
+        grid-template-columns: 25% 80%;
+        text-align: right;
+    }
+    form div{
+        margin: 10px 0;
+    }
+    form input, form select{
+        height: 25px;
+        border-radius: 4px;
+        background-color: #f2f2f254;
+        border: 1px solid lightgray;
+    }
+    form button{
+        width: fit-content;
+        padding: 0 20px;
+        height: 30px;
+        margin:20px auto 10px auto;
+        display: block;
+    }
+</style>
+
+<main>
+<div th:if="${event}">
+<form method="POST" action="/events/edit">
+    <input type="hidden" name="id" th:value="${event.id}">
+    <div>
+    <label>Event Name:
+    <input type="text" name="name" th:value="${event.name}">
+    </label>
+    </div>
+    <div>
+    <label>Description:
+    <input type="text" name="description" th:value="${event.description}">
+    </label>
+    </div>
+    <div>
+    <label>Rating:
+    <input type="text" name="popularityScore" th:value="${event.popularityScore}">
+    </label>
+    </div>
+    <div>
+    <label>Location:
+    <select name="locationId">
+        <option th:value="${selected.id}" th:text="${selected.name}" selected></option>
+        <option th:each="location : ${locations}"
+                th:value="${location.id}"
+                th:text="${location.name}">
+        </option>
+    </select>
+    </label>
+    </label>
+    </div>
+    <button type="submit">Save</button>
+</form>
+</div>
+<div th:if="${add}">
+    <form method="POST" action="/events/add">
+        <input type="hidden" name="id">
+        <div>
+        <label>Event Name:
+            <input type="text" name="name">
+        </label>
+        </div>
+        <div>
+        <label>Description:
+        <input type="text" name="description">
+        </label>
+        </div>
+        <div>
+        <label>Rating:
+        <input type="text" name="popularityScore">
+        </label>
+        </div>
+        <div>
+        <label>Location:
+        <select name="locationId">
+            <option value="" disabled selected>Select a Location</option>
+            <option th:each="location : ${locations}"
+                    th:value="${location.id}"
+                    th:text="${location.name}">
+            </option>
+        </select>
+        </label>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</div>
+</main>

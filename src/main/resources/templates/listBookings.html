@@ -1,0 +1,22 @@
+<style>
+    .bookings-top input{
+        height:26px;
+        border-radius: 4px;
+    }
+</style>
+<main>
+    <div class="bookings-top">
+        <div>
+            <form action="/bookings/search" method="POST">
+                <input type="text" name="text" th:value="${searchValue}" placeholder="By text">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <h2>Bookings</h2>
+    <li th:each="booking: ${bookings}">
+        <label>
+            <span th:text="'Event Name: ' + ${booking.eventName} + ', Attendee: ' + ${booking.attendeeName} + ', Address: ' + ${booking.attendeeAddress} + ', Number of Tickets: ' + ${booking.numberOfTickets}"></span>
+        </label>
+    </li>
+</main>
