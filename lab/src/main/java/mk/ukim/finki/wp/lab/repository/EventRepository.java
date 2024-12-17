@@ -47,7 +47,7 @@ public class EventRepository {
     public static Event findById(Long id) throws EventNotFoundException{
         Event event = events.stream().filter(e -> e.getId().equals(id)).findFirst().orElse(null);
         if(event == null)
-            throw new EventNotFoundException(String.valueOf(id));
+            throw new EventNotFoundException(id);
         return event;
     }
     public static void addEvent(Event event){

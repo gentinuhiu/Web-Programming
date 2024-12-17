@@ -78,6 +78,8 @@
         color:red;
     }
 </style>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 
 <main>
     <div class="top">
@@ -112,14 +114,18 @@
 
 
                 <br>
+                <div sec:authorize="hasRole('ADMIN')">
+
                 <div class="buttons">
                 <th:block th:if="${!event.ratingChanged}">
                 <a th:href="@{/events/increment/{id}(id=${event.id})}">Increment</a> |
                 <a th:href="@{/events/decrement/{id}(id=${event.id})}">Decrement</a> |
                 </th:block>
-                <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a> |
-                <a th:href="@{/events/delete/{id}(id=${event.id})}">Delete</a>
+                        <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a> |
+                        <a th:href="@{/events/delete/{id}(id=${event.id})}">Delete</a>
                 </div>
+                </div>
+
             </div>
                 </div>
         </label>

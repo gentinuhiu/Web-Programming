@@ -16,16 +16,19 @@ public class Event {
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
     private boolean ratingChanged;
+    @OneToOne
+    Category category;
 
     public Event() {
 
     }
-    public Event(String name, String description, double popularityScore, Location location, boolean ratingChanged) {
+    public Event(String name, String description, double popularityScore, Location location, boolean ratingChanged, Category category) {
         this.name = name;
         this.description = description;
         this.popularityScore = popularityScore;
         this.location = location;
         this.ratingChanged = ratingChanged;
+        this.category = category;
     }
 
     public void setId(Long id) {
@@ -74,5 +77,13 @@ public class Event {
 
     public boolean isRatingChanged() {
         return ratingChanged;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }

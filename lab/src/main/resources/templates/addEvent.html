@@ -60,6 +60,16 @@
         </option>
     </select>
     </label>
+    <br>
+        <label>Category:
+            <select name="categoryId">
+                <option th:value="${selected_category.id}" th:text="${selected_category.name}" selected></option>
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}">
+                </option>
+            </select>
+        </label>
     </label>
     </div>
     <button type="submit">Save</button>
@@ -93,6 +103,16 @@
             </option>
         </select>
         </label>
+        <br>
+            <label>Category:
+                <select name="categoryId">
+                    <option value="" disabled selected>Select a Category</option>
+                    <option th:each="category : ${categories}"
+                            th:value="${category.getId()}"
+                            th:text="${category.getName()}">
+                    </option>
+                </select>
+            </label>
         </div>
         <button type="submit">Add</button>
     </form>

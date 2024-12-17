@@ -31,7 +31,7 @@ public class EventServiceNew {
     public void deleteById(Long id) {
         eventRepository.deleteById(id);
     }
-    public Event findById(Long id) {
+    public Event findById(Long id) throws EventNotFoundException {
         return eventRepository.findById(id)
                 .orElseThrow(() -> new EventNotFoundException(id));
     }
